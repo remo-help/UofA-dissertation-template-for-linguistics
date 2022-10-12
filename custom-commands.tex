@@ -1,0 +1,18 @@
+% this file can host your custom commands so they do not clutter your mainfile
+
+% for documentation on LaTeX commands see: https://www.overleaf.com/learn/latex/Commands#Simple_commands
+
+
+%%% The following allows dagger footnote on chapter titles
+%%% with no number. Useful for designating previously 
+%%% published work.
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+    \setcounter{daggerfootnote}{\value{footnote}}%
+    \renewcommand*{\thefootnote}{\fnsymbol{footnote}}%
+    \footnote[2]{#1}%
+    \setcounter{footnote}{\value{daggerfootnote}}%
+    \renewcommand*{\thefootnote}{\arabic{footnote}}%
+    }
+
+

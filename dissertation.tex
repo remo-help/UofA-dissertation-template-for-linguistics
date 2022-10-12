@@ -1,0 +1,173 @@
+% Sample Dissertation, Thesis, or Document %
+%            for use with the              %
+%  University of Arizona Thesis Class,     %
+%               uathesis.cls               %
+%------------------------------------------%
+
+% This is an adapted version of J.J. Charfman's template which can be
+% found here: https://da.overleaf.com/latex/templates/university-of-arizona-astronomy-thesis-template/tsfqcgnfmjcx
+% This template is adapted for linguistics. The uncommented line
+% below will produce a Dissertation, the others would produce a Thesis
+% or a Document.  There are other options available to you like turning
+% on the copyright statement and replacing the year on the title page
+% with a "generated on" stamp (handy for early drafts).  To find out
+% what the available options are, take a look into the uathesis.cls
+% file and look for the \DeclareOption commands near the top of that
+% file.
+% There are five copyright options.  Copyright, no copyright, and three
+% different Creative Commons licences.  Use the one you want (If you go
+% Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
+% uathesis.cls for the reason why the non-commercial licenses are not
+% included.
+\documentclass[dissertation]{uathesis}
+%\documentclass[dissertation,copyright]{uathesis}
+%\documentclass[dissertation,CC-BY]{uathesis}
+%\documentclass[dissertation,CC-BY-SA]{uathesis}
+%\documentclass[dissertation,CC-BY-ND]{uathesis}
+%\documentclass[thesis]{uathesis}
+%\documentclass[document]{uathesis}
+
+% Package Usage
+% These are the packages that I recommend
+
+
+%\usepackage{color} %broader color range and color options, allows you to define your
+                    % own colors as RBG vectors
+\usepackage[table,dvipnames]{xcolor}  %a more user friendly version of color, 
+                                        %the [table] option gives you color range in tables
+
+
+\usepackage{graphicx} % allows insertion of pictures etc
+
+
+
+\usepackage[utf8]{inputenc} %allows you to directly input utf-8 characters
+                            % this means you can just type Árüz instead of \'Ar\"uz
+
+                            
+% \usepackage{natbib}			% natbib is available on most systems, and is
+					% terribly handy.
+					% We are using biber for this template, but leaving natbib in as an option
+                    % if you want to use natbib instead of biber/biblatex, you need to 
+                    % comment out the next package and the % addbibresource params
+\usepackage[backend=biber,
+                style=unified, % we are using the LSA unified style sheet here
+                maxcitenames=2,
+                maxbibnames=99,
+                natbib]{bib latex}
+\addbibresource{bibliography.bib}
+
+
+\usepackage{tipa} %enables an IPA environment
+
+\usepackage{qtree} %allows simple trees
+\usepackage[linguistics]{forest} %allows more complex trees
+
+
+\usepackage{fancyhdr} % cosmetics for better headings
+
+
+
+% \usepackage{times}  %enable if you want to use a times font
+\usepackage{amsmath} %this allows the use of \eqref{}, eqref will automatically put 
+                    % brackets around your reference, which is great for referencing
+                    % gb4e examples
+\usepackage[hidelinks]{hyperref} %allows to use references as links [hidelinks] makes sure there are no borders around the link, gives me \autoref
+
+
+\usepackage{lscape}			% Used for making fitting large tables in by putting them landscape
+\usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
+
+
+% \usepackage{enumitem} % allows advanced controls of tables and example numbering
+		
+
+% If you are using hyper-ref (recommended), this command must go after all 
+% other package inclusions (from the hyperref package documentation).
+% The purpose of hyperref is to make the PDF created extensively
+% cross-referenced.
+%allows to use references as links [hidelinks] makes sure there are no borders around the link, gives us \autoref
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{gb4e} %manages example numbering, has to be last package in pre-amble, will break document otherwise
+
+\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file
+
+% Set up some values.
+\completetitle{}
+\fullname{}			% Grad college wants your full name here.
+\degreename{Doctor of Philosophy}	% Title of your degree.
+\degreemajor{Linguistics} % Degree major
+\begin{document}
+
+
+% Set up the title page
+\maketitlepage
+{DEPARTMENT OF LINGUISTICS}	% Title of your department.
+{2019}							
+
+% Insert the approval form.  Note that for electronic submission
+% of your Ph. D. dissertation, you must bring *two* copies of the
+% approval page to your final defense.  These must be signed by
+% the committee.  Make two photocopies: one for Pam and the other
+% for your records.  Then, bring the two signed originals to the
+% graduate college when you submit the final version of the
+% dissertation to the University of Arizona.
+\approval
+{}		% Defense Date	
+{}	% Dissertation Director
+{}	% 1st committee member
+{}		% 2nd committee member
+{}		% 3rd committee member
+{}		% 4th committee member
+{}		% 5th committee member
+{}		% 6th committee member
+
+% Include the ``Statement by Author'' for Dissertations
+\statementbyauthor
+% If this is a Thesis, use the following form, with your thesis director's
+% name and title in the square brackets like so (you should also omit the 
+% approval form insertion above):
+%\statementbyauthor[Jane M. Doe\\Professor of Chemistry]
+
+% Include the ``Acknowledgements''
+\incacknowledgements{acknowledgements}
+
+% Include the ``Dedication''
+\incdedication{dedication}
+
+% Create a ``Table of Contents''
+\tableofcontents
+
+% Create a ``List of Figures''
+\listoffigures
+
+% Create a ``List of Tables''
+\listoftables
+
+% Include the ``Abstract''
+\incabstract{abstract}
+
+% Include the various chapters
+\include{introduction}
+\include{chapter2}
+\include{chapter3}
+
+
+% Include the various appendices
+\appendix
+\include{appendix}
+
+
+% Switch the spacing to single-spaced for the references
+\renewcommand{\baselinestretch}{1}		% changing the value
+\small\normalsize						% switch size to make the value take
+
+% Use the below if using natbib
+%\bibliographystyle{uabibnat} % this is where your natbib stylesheet is referenced
+%\bibliography{bibliography}
+
+% use this for biblatex/biber
+\printbibliography
+
+\end{document}

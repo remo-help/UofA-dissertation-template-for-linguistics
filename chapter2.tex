@@ -1,0 +1,42 @@
+\chapter[Chapter 2]{TitleofChapter}
+
+Let's make a figure out of a tree and position it right under our text:
+
+\begin{figure}[h] %to understand figure positioning, please refer to: 
+% https://www.overleaf.com/learn/latex/Inserting_Images
+    \centering
+    \begin{forest}
+    [NP [DP] [N] ]
+    \end{forest}
+    \caption[A very special figure]{Caption}
+    \label{fig:mylabel}
+\end{figure}
+
+And here is a table which we position at the bottom:
+%%%%%%%%% some custom definitions first
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}} %here we define a custom column
+% type, called 's', this will have the color as defined via HTML and a width of 3cm
+\arrayrulecolor[HTML]{DB5800}
+\colorlet{mycolor}{red!30!blue!50} % here we define our own color, using red  
+                                    % at 30% opacity and blue at 50%
+%%%%%%%%% https://www.overleaf.com/learn/latex/Tables
+\begin{table}[b]
+\begin{tabular}{ |s|p{3cm}|p{3cm}| }
+\hline
+\rowcolor{lightgray} \multicolumn{3}{|c|}{Country List} \\
+\hline
+Country Name or Area Name \cellcolor{mycolor}
+& ISO ALPHA 2 Code &ISO ALPHA 3 \\
+\hline
+Afghanistan & AF &AFG \\
+\rowcolor{gray}
+Aland Islands & AX & ALA \\
+Albania   &AL & ALB \\
+Algeria  &DZ & DZA \\
+American Samoa & AS & ASM \\
+Andorra & AD & \cellcolor[HTML]{AA0044} AND    \\
+Angola & AO & AGO \\
+\hline
+\end{tabular}
+\caption[the table's list reference in the list of tables]{A table with some color, positioned at the bottom of a page}
+\end{table}

@@ -1,0 +1,22 @@
+\chapter[Introduction]% the [square brackets] define the name of this in the TOC
+{Introduction\daggerfootnote{This chapter has been published previously as \citet{Chimsky2022}.}}\label{chap:Intro} %we define a label for this chapter
+
+
+
+Here are different cite commands as demonstrated in a \emph{gb4e} list:
+
+\begin{exe}
+    \ex \textbackslash cite : \cite{chomsky-why-2016}
+    \ex now here is a sublist \begin{xlista}
+    \ex \textbackslash citep : \citep{chomsky-why-2016}
+    \ex \textbackslash citet{} : \citet{chomsky-why-2016}
+    \end{xlista}
+    \ex\label{item} now there is another numbered item
+\end{exe}
+And now I reference that item with \textbackslash eqref: \eqref{item}
+%\begin{figure}
+%\centering
+%\includegraphics[angle=0,width=\columnwidth]{fig1.pdf}
+%\caption[]{}
+%\label{fig1}
+%\end{figure}
