@@ -316,9 +316,10 @@
   	\begin{center}
     \ifnum \c@secnumdepth >\m@ne
       \if@mainmatter
-        %\huge\bfseries \@chapapp\space \thechapter
+      % if you want your chapter titles to not be big, comment out the following line, and uncomment line 321 or 322
+        \Large\bfseries \@chapapp\space \thechapter
         %\bfseries \@chapapp\space \thechapter
-        \@chapapp\space \thechapter
+        %\@chapapp\space \thechapter
         \par\nobreak
         \vskip 20\p@
       \fi
