@@ -14,7 +14,7 @@
 %% Terry Hurford	2005
 %% Curtis S. Cooper	2007
 %% David A. Minton 2009
-%%
+%% Remo Nitschke 2023 (Linguistics)
 %%
 %% Todo:
 %% Currently footskip is zero.  This should be looked into.
@@ -457,6 +457,12 @@
 \newcommand{\CompleteTitle}{#1}
 }
 
+% inline title: We use this in case the complete title features a linebreak or something similar that we don't want in the Committee page
+
+\newcommand{\inlinetitle}[1]{%
+\newcommand{\Inlinetitle}{#1}
+}
+
 \newcommand{\fullname}[1]{%
 \newcommand{\FullName}{#1}
 }
@@ -576,7 +582,7 @@ THE UNIVERSITY OF ARIZONA
 
 \chapter*{THE UNIVERSITY OF ARIZONA\\GRADUATE COLLEGE}
 
-As members of the Dissertation Committee, we certify that we have read the \MakeLowercase{\ThesisType} prepared by \FullName, titled \CompleteTitle~and recommend that it be accepted as fulfilling the \MakeLowercase{\ThesisType} requirement for the Degree of \DegreeName. % NICK EDITED THIS LINE
+As members of the Dissertation Committee, we certify that we have read the \MakeLowercase{\ThesisType} prepared by \FullName, titled \emph{\ifthenelse{\isundefined{\Inlinetitle}}{\CompleteTitle}{\Inlinetitle}}~and recommend that it be accepted as fulfilling the \MakeLowercase{\ThesisType} requirement for the Degree of \DegreeName. % NICK EDITED THIS LINE
 
 % Before the final oral defense you must obtain the Approval Pages
 % from the Degree Certification Office. Original signatures are
