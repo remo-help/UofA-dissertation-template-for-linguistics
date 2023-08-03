@@ -29,6 +29,7 @@
 \ProvidesClass{uathesis}[2005/08/09 University of Arizona Thesis Class]
 
 \RequirePackage{ifthen}
+\RequirePackage{tikz} % we need this for the watermark option
 \RequirePackage{cclicenses} % This is used to generate the Creative Commons
 									 % icons.  cclicenses.sty should be present along
 									 % with this file.  If you don't plan on using a
@@ -626,6 +627,95 @@ As members of the Dissertation Committee, we certify that we have read the \Make
 	& Date: #1	\\
 \cline{1-1}
 #8	& 			\\
+\end{tabular*}
+\end{flushleft}
+
+\vfill
+
+\noindent Final approval and acceptance of this \MakeLowercase{\ThesisType} is
+contingent upon the candidate's submission of the final copies of the
+\MakeLowercase{\ThesisType} to the Graduate College. \\ % NICK ADDED THIS NEWLINE
+
+\noindent I hereby certify that I have read this \MakeLowercase{\ThesisType} prepared
+under my direction and recommend that it be accepted as fulfilling the 
+\MakeLowercase{\ThesisType} requirement.
+
+\vfill
+
+\bigskip
+\begin{flushleft}
+\begin{tabular*}{\textwidth}{p{4in}@{\extracolsep{\fill}}l}
+							& Date: #1	\\
+\cline{1-1}
+Dissertation Director: #2	&			\\
+%%%%% EVAN ADDED THE FOLLOWING FIVE LINES (CO-CHAIRS)
+%	& 			\\
+%	& 			\\
+%							& Date: #1	\\
+%\cline{1-1}
+%Dissertation Director: #4	&			\\
+%%%%%
+\end{tabular*}
+\end{flushleft}
+}
+
+}
+
+%%---------------------------- Approval Form With Watermark --------------------------
+% Creates the same approval form as above, but with a UA watermark
+\newcommand{\approvalWithWM}[8]{%STEPH ADDED A COMMITTEE MEMBER
+
+{
+\renewcommand{\baselinestretch}{1}	% single spaced here
+\small\normalsize	
+
+\chapter*{THE UNIVERSITY OF ARIZONA\\GRADUATE COLLEGE}
+
+As members of the Dissertation Committee, we certify that we have read the \MakeLowercase{\ThesisType} prepared by \FullName, titled \emph{\ifthenelse{\isundefined{\Inlinetitle}}{\CompleteTitle}{\Inlinetitle}}~and recommend that it be accepted as fulfilling the \MakeLowercase{\ThesisType} requirement for the Degree of \DegreeName. % NICK EDITED THIS LINE
+
+\tikz[remember picture,overlay] \node[opacity=0.15,inner sep=0pt] at (current page.center){\includegraphics[width=\textwidth]{ua_stack_rgb_4_0.png}};
+% Before the final oral defense you must obtain the Approval Pages
+% from the Degree Certification Office. Original signatures are
+% required on both final copies.  That means print out the Approval
+% Forms (one for each copy of the \ThesisType) on the nice acid-free
+% paper and get original signatures on each one.  Do this at your
+% defense to keep from having to do another signature round-up later
+% on.
+
+\vfill
+
+\bigskip
+\begin{flushleft}
+\begin{tabular*}{\textwidth}{p{4in}@{\extracolsep{\fill}}l}
+	& Date: #1	\\
+\cline{1-1}
+#3	& 			\\
+	&			\\
+	&			\\
+	& Date: #1	\\
+\cline{1-1}
+#4	& 			\\
+	&			\\
+	&			\\
+	& Date: #1	\\
+\cline{1-1}
+#5	& 			\\
+%	& 			\\
+%	& 			\\
+%	& Date: #1	\\
+%\cline{1-1}
+%#6	& 			\\
+%	&			\\
+%	&			\\
+%	& Date: #1	\\
+%\cline{1-1}
+%#7	& 			\\
+%STEPH ADDED A COMMITTEE MEMBER HERE
+%	&			\\
+%	&			\\
+%	& Date: #1	\\
+%\cline{1-1}
+%#8	& 			\\
 \end{tabular*}
 \end{flushleft}
 
