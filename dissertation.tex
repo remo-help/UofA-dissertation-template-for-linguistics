@@ -19,7 +19,7 @@
 % Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
 % uathesis.cls for the reason why the non-commercial licenses are not
 % included.
-\documentclass[dissertation]{uathesis}
+\documentclass[dissertation,xcolor={table,dvipnames}]{uathesis} % we require tikz, which requires xcolor, if you want to load these packages with options, then do it as seen here.
 %\documentclass[dissertation,copyright]{uathesis}
 %\documentclass[dissertation,CC-BY]{uathesis}
 %\documentclass[dissertation,CC-BY-SA]{uathesis}
@@ -33,8 +33,6 @@
 
 %\usepackage{color} %broader color range and color options, allows you to define your
                     % own colors as RBG vectors
-\usepackage[table,dvipnames]{xcolor}  %a more user friendly version of color, 
-                                        %the [table] option gives you color range in tables
 
 
 \usepackage{graphicx} % allows insertion of pictures etc
@@ -131,6 +129,7 @@
 % and the other for your records.  Then, bring the two signed 
 % originals to the graduate college when you submit the 
 % final version of the dissertation to the University of Arizona.
+% if you want to change the number of lines displayed, you need to do this in the uathesis.cls class, check the \approval command
 \approval
 {}		% Defense Date	
 {}	% Dissertation Director
@@ -140,6 +139,9 @@
 {}		% 4th committee member
 {}		% 5th committee member
 {}		% 6th committee member
+
+% if you want to load your approval with a UA watermark, use this command, which uses the same syntax as the one above:
+% \approvalWithWM{}{}{}{}{}{}{}{}
 
 % Include the ``Statement by Author'' for Dissertations
 \statementbyauthor
