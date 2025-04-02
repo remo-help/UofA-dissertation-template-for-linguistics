@@ -6,9 +6,10 @@
 
 % This is an adapted version of J.J. Charfman's template which can be
 % found here: https://da.overleaf.com/latex/templates/university-of-arizona-astronomy-thesis-template/tsfqcgnfmjcx
-% This template is adapted for linguistics. The uncommented line
-% below will produce a Dissertation, the others would produce a Thesis
-% or a Document.  There are other options available to you like turning
+% This template is adapted for linguistics, with support for XeLaTeX, 
+% duly tested on XeLaTeX 2024 and 2023, PDFLaTeX 2024 and 2023.
+% The uncommented line below will produce a Dissertation, the others would produce
+% a Thesis or a Document.  There are other options available to you like turning
 % on the copyright statement and replacing the year on the title page
 % with a "generated on" stamp (handy for early drafts).  To find out
 % what the available options are, take a look into the uathesis.cls
@@ -19,7 +20,7 @@
 % Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
 % uathesis.cls for the reason why the non-commercial licenses are not
 % included.
-\documentclass[dissertation,table,dvipnames]{uathesis} % we require tikz, which requires xcolor, if you want to load these packages with options, then do it as seen here. Any tikz or xcolor options need to be passed along here. Alternatively, you should also be able to load these packages explicitly
+\documentclass[dissertation]{uathesis} 
 %\documentclass[dissertation,copyright]{uathesis}
 %\documentclass[dissertation,CC-BY]{uathesis}
 %\documentclass[dissertation,CC-BY-SA]{uathesis}
@@ -27,11 +28,11 @@
 %\documentclass[thesis]{uathesis}
 %\documentclass[document]{uathesis}
 
-% Package Usage
+%%############ Package Usage ############
 % These are the packages that I recommend
 
 \usepackage{fancyhdr} % cosmetics for better headings
-%%----This is an attempt to fix the header issue.
+%%----This is an attempt to fix the header issue pointed out by Grad College- comment this section out if its not needed.
     \fancypagestyle{plain}{
         \lhead{}
         \chead{}
@@ -52,13 +53,14 @@
         \renewcommand{\headrulewidth}{0pt}
         \fancyfoot{}
     }
+
 %% This is an attempt at juryrigging an appendix
 \usepackage{pdfpages}
 
 
 \usepackage{xcolor} %broader color range and color options, allows you to define your own colors as RBG vectors
 
-%%  Packages for Tables and Graphics:
+%%############ Packages for Tables and Graphics ############
 \usepackage{graphicx} % allows insertion of pictures etc
     \graphicspath{{images/}}
 %%  Packages for Tables and Graphics:
@@ -70,34 +72,45 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
+\usepackage{colortbl} %tables with color celss
 \usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
 \usepackage{longtable} %trying to allow tables to go onto next page
 \usepackage{array} % trying to control table cell size
 
 \usepackage{enumitem} % allows advanced controls of tables and example numbering
 
-%############ XELATEX SUPPORT ############
-%%  Packages for Fonts
+\usepackage{amsmath} %amsmath allows the use of \eqref{}, 
+                     % eqref will automatically put 
+                     % brackets around your reference, 
+                     % which is great for referencing gb4e examples.  
+
+%%############ PDFLATEX FONT SUPPORT ############
+%%Uncomment this section if your compiler is PDFLATEX
+%%inputenc allows you to directly input utf-8 characters. This means you can just type Árüz instead of \'Ar\"uz:
+
+% \usepackage[utf8]{inputenc} 
+                            
+%%############ XELATEX FONT SUPPORT ############
+%%  Packages for Fonts. To add a new font and call it alongside the main font of the text, use the format '\newfontfamily\nameofcommand{Font Name}' as shown below.
+
 \usepackage{times}  %enable if you want to use a times font
 \usepackage{fontspec}
-    \setmainfont{Times} % If you want to use Times
-    \newfontfamily\ipa{Doulos SIL} %ALT FONT
-    % \newfontfamily\nameofcommand{Font Name} %Template
-% \usepackage[utf8]{inputenc} %allows you to directly input utf-8 characters
-                            % this means you can just type Árüz instead of \'Ar\"uz
+    % \setmainfont{Times} % Uncomment if you want to use Times
+    \newfontfamily\ipa{Doulos SIL} %ALT FONT for IPA symbols
 
-\usepackage{amsmath} %this allows the use of \eqref{}, eqref will automatically put 
-                    % brackets around your reference, which is great for referencing
-                    % gb4e examples
-  
 %% ############ Packages for Citations: ############                          
-% todo: add notes here
-% \usepackage{natbib}
-% \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}} % natbib is available on most systems, and is
+%% LaTeX has two bibliography compiling systems, natbib and biber. Choose the one that you intend to use:
+
+%% 1. NATBIB:
+%% natbib is available on most systems, and is
 					% terribly handy.
 					% We are using biber for this template, but leaving natbib in as an option
                     % if you want to use natbib instead of biber/biblatex, you need to 
                     % comment out the next package and the % addbibresource params
+% \usepackage{natbib}
+% \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}} 
+
+%% 2. BIBER:
 \usepackage[backend=biber,
                 style=unified, % we are using the LSA unified style sheet here
                 maxcitenames=2,
@@ -107,36 +120,15 @@
 \renewcommand{\bibname}{References}
 
 %% ###################### TODONOTES #######################
-%% Uncomment the following line for final draft
-%     %% \usepackage[disable]{todonotes}
+%% Use one of the following two package invocations. The first is for the final version, the second for adding todonotes and comments:
 
-    \usepackage[colorinlistoftodos,backgroundcolor= yellow, bordercolor= black]{todonotes}
+%% 1. DISABLE TODONOTES:
+%\usepackage[disable]{todonotes}
+%% 2. ENABLE TODONOTES:
+\usepackage[colorinlistoftodos,backgroundcolor= yellow, bordercolor= black]{todonotes}
     \setuptodonotes{inline, prepend, caption={ToDo}}
-
-%% Custom ToDo notes
-%%  Useage: \done{completed todo text, prints 'done'}, \nw{todos from nw}, \todocite{prints the work cite}
-%% todo notes for completed todos:
-    \newcommand{\done}[1]{\todo[color=green!40, prepend, caption={Done}]{#1}}
-%% todo notes by self:
-    \newcounter{todocounter}
-    \newcommand{\todonum}[2][]
-    {\stepcounter{todocounter}\todo[#1]
-    {\thetodocounter: #2}}
-%% todo notes by Natasha
-    \newcommand{\nw}[2][]
-    {\stepcounter{todocounter}\todo[color=orange!40, author=Natasha, noprepend]{\thetodocounter: #2}}   
-
-%% todo notes for adding citation
-    \newcommand{\todocite}[2][]
-    {\stepcounter{todocounter}\todo[inlinewidth=2.2cm, noinlinepar, color=blue!40, prepend, caption={CITE}]
-    {\thetodocounter: #2}}  
-
-%% todo notes for reverse outline
-     \newcommand{\reverseOutline}[2][]
-     {\stepcounter{todocounter}\todo[color=grey!40, noprepend]{\thetodocounter: #2}}
 %% #######################################
-
-\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file	
+	
 
 % If you are using hyper-ref (recommended), this command must go after all 
 % other package inclusions (from the hyperref package documentation).
@@ -152,7 +144,8 @@
 \usepackage[linguistics]{forest} %allows more complex trees
 \usepackage{gb4e} %manages example numbering, has to be last package in pre-amble, will break document otherwise
 
-% Set up some values.
+%% ########## Set up values for Title Page ############
+ 
 \completetitle{Title}
 \fullname{}			% Grad college wants your full name here.
 \degreename{Doctor of Philosophy}	% Title of your degree.
@@ -167,6 +160,8 @@
 %\inlinetitle{}
 
 \begin{document}
+
+\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file
 
 % tocdepth defines how many layers of sections/subsections are displayed in your table of content. The hierarchy works like this:
 % Chapters (1)> Sections (2) > Subsections (3) > SubSubsections (4) > Paragraphs (5)
