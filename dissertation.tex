@@ -6,7 +6,7 @@
 
 % This is an adapted version of J.J. Charfman's template which can be
 % found here: https://da.overleaf.com/latex/templates/university-of-arizona-astronomy-thesis-template/tsfqcgnfmjcx
-% This template is adapted for linguistics. The uncommented line
+% This template is adapted for linguistics, with support for XeLaTeX, duly tested on . The uncommented line
 % below will produce a Dissertation, the others would produce a Thesis
 % or a Document.  There are other options available to you like turning
 % on the copyright statement and replacing the year on the title page
@@ -19,7 +19,7 @@
 % Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
 % uathesis.cls for the reason why the non-commercial licenses are not
 % included.
-\documentclass[dissertation,table,dvipnames]{uathesis} % we require tikz, which requires xcolor, if you want to load these packages with options, then do it as seen here. Any tikz or xcolor options need to be passed along here. Alternatively, you should also be able to load these packages explicitly
+\documentclass[dissertation]{uathesis} 
 %\documentclass[dissertation,copyright]{uathesis}
 %\documentclass[dissertation,CC-BY]{uathesis}
 %\documentclass[dissertation,CC-BY-SA]{uathesis}
@@ -27,59 +27,107 @@
 %\documentclass[thesis]{uathesis}
 %\documentclass[document]{uathesis}
 
-% Package Usage
+%%############ Package Usage ############
 % These are the packages that I recommend
 
+\usepackage{fancyhdr} % cosmetics for better headings
+%%----This is an attempt to fix the header issue pointed out by Grad College- comment this section out if its not needed.
+    \fancypagestyle{plain}{
+        \lhead{}
+        \chead{}
+        \fancyhead[R]{\thepage}
+        \fancyhead[L]{}
+        \fancyhead[C]{}
+        \renewcommand{\headrulewidth}{0pt}
+        \fancyfoot{}
+        \setlength{\footskip}{4.35004pt}
+    }
+    \setlength{\headheight}{20.5pt}
+    \pagestyle{plain}
+    
+    \fancypagestyle{fancy}{
+        \fancyhead[R]{\thepage}
+        \fancyhead[L]{\leftmark}
+        \fancyhead[C]{}
+        \renewcommand{\headrulewidth}{0pt}
+        \fancyfoot{}
+    }
 
-%\usepackage{color} %broader color range and color options, allows you to define your
-                    % own colors as RBG vectors
+%% This is an attempt at juryrigging an appendix
+\usepackage{pdfpages}
 
 
+\usepackage{xcolor} %broader color range and color options, allows you to define your own colors as RBG vectors
+
+%%############ Packages for Tables and Graphics ############
 \usepackage{graphicx} % allows insertion of pictures etc
+    \graphicspath{{images/}}
+%%  Packages for Tables and Graphics:
+\usepackage{placeins} % helps with floats and placing elements within sections
+\usepackage{float} %trying to get my images where I want them
 
+% \usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
+% \usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
+\usepackage{colortbl} %tables with color celss
+\usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
+\usepackage{longtable} %trying to allow tables to go onto next page
+\usepackage{array} % trying to control table cell size
 
+\usepackage{enumitem} % allows advanced controls of tables and example numbering
 
-\usepackage[utf8]{inputenc} %allows you to directly input utf-8 characters
-                            % this means you can just type Árüz instead of \'Ar\"uz
+\usepackage{amsmath} %amsmath allows the use of \eqref{}, 
+                     % eqref will automatically put 
+                     % brackets around your reference, 
+                     % which is great for referencing gb4e examples.  
 
+%%############ PDFLATEX FONT SUPPORT ############
+%%Uncomment this section if your compiler is PDFLATEX
+%%inputenc allows you to directly input utf-8 characters. This means you can just type Árüz instead of \'Ar\"uz:
+
+% \usepackage[utf8]{inputenc} 
                             
-% \usepackage{natbib}
-% \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}} % natbib is available on most systems, and is
+%%############ XELATEX FONT SUPPORT ############
+%%  Packages for Fonts. To add a new font and call it alongside the main font of the text, use the format '\newfontfamily\nameofcommand{Font Name}' as shown below.
+
+\usepackage{times}  %enable if you want to use a times font
+\usepackage{fontspec}
+    % \setmainfont{Times} % Uncomment if you want to use Times
+    \newfontfamily\ipa{Doulos SIL} %ALT FONT for IPA symbols
+
+%% ############ Packages for Citations: ############                          
+%% LaTeX has two bibliography compiling systems, natbib and biber. Choose the one that you intend to use:
+
+%% 1. NATBIB:
+%% natbib is available on most systems, and is
 					% terribly handy.
 					% We are using biber for this template, but leaving natbib in as an option
                     % if you want to use natbib instead of biber/biblatex, you need to 
                     % comment out the next package and the % addbibresource params
+% \usepackage{natbib}
+% \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}} 
+
+%% 2. BIBER:
 \usepackage[backend=biber,
                 style=unified, % we are using the LSA unified style sheet here
                 maxcitenames=2,
                 maxbibnames=99,
                 natbib]{bib latex}
 \addbibresource{bibliography.bib}
+\renewcommand{\bibname}{References}
 
+%% ###################### TODONOTES #######################
+%% Use one of the following two package invocations. The first is for the final version, the second for adding todonotes and comments:
 
-\usepackage{tipa} %enables an IPA environment
-
-\usepackage{qtree} %allows simple trees
-\usepackage[linguistics]{forest} %allows more complex trees
-
-
-\usepackage{fancyhdr} % cosmetics for better headings
-
-
-
-% \usepackage{times}  %enable if you want to use a times font
-\usepackage{amsmath} %this allows the use of \eqref{}, eqref will automatically put 
-                    % brackets around your reference, which is great for referencing
-                    % gb4e examples
-\usepackage[hidelinks]{hyperref} %allows to use references as links [hidelinks] makes sure there are no borders around the link, gives me \autoref
-
-
-\usepackage{lscape}			% Used for making fitting large tables in by putting them landscape
-\usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
-
-
-% \usepackage{enumitem} % allows advanced controls of tables and example numbering
-		
+%% 1. DISABLE TODONOTES:
+%\usepackage[disable]{todonotes}
+%% 2. ENABLE TODONOTES:
+\usepackage[colorinlistoftodos,backgroundcolor= yellow, bordercolor= black]{todonotes}
+    \setuptodonotes{inline, prepend, caption={ToDo}}
+%% #######################################
+	
 
 % If you are using hyper-ref (recommended), this command must go after all 
 % other package inclusions (from the hyperref package documentation).
@@ -88,12 +136,16 @@
 %allows to use references as links [hidelinks] makes sure there are no borders around the link, gives us \autoref
 \usepackage[hidelinks]{hyperref}
 
+%% ########## Linguistics Packages ############
+\usepackage{tikz} %graph solution that should help me get a nice vowel chart
+\usepackage{tipa} %enables an IPA environment
+\usepackage{qtree} %allows simple trees
+\usepackage[linguistics]{forest} %allows more complex trees
 \usepackage{gb4e} %manages example numbering, has to be last package in pre-amble, will break document otherwise
 
-\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file
-
-% Set up some values.
-\completetitle{}
+%% ########## Set up values for Title Page ############
+ 
+\completetitle{Title}
 \fullname{}			% Grad college wants your full name here.
 \degreename{Doctor of Philosophy}	% Title of your degree.
 \degreemajor{Linguistics} % Degree major
@@ -107,6 +159,8 @@
 %\inlinetitle{}
 
 \begin{document}
+
+\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file
 
 % tocdepth defines how many layers of sections/subsections are displayed in your table of content. The hierarchy works like this:
 % Chapters (1)> Sections (2) > Subsections (3) > SubSubsections (4) > Paragraphs (5)
@@ -151,10 +205,10 @@
 %\statementbyauthor[Jane M. Doe\\Professor of Chemistry]
 
 % Include the ``Acknowledgements''
-\incacknowledgements{acknowledgements}
+\incacknowledgements{sections/acknowledgements}
 
 % Include the ``Dedication''
-\incdedication{dedication}
+\incdedication{sections/dedication}
 
 % Create a ``Table of Contents''
 \tableofcontents
@@ -166,17 +220,17 @@
 \listoftables
 
 % Include the ``Abstract''
-\incabstract{abstract}
+\incabstract{sections/abstract}
 
 % Include the various chapters
-\include{introduction}
-\include{chapter2}
-\include{chapter3}
+\include{sections/introduction}
+\include{sections/chapter2}
+\include{sections/chapter3}
 
 
 % Include the various appendices
 \appendix
-\include{appendix}
+\include{sections/appendix}
 
 
 % Switch the spacing to single-spaced for the references
@@ -190,7 +244,9 @@
 % if you wish to use the UA citation style instead, call "uabibnat.bst" in the \bibliographystyle
 %\bibliography{bibliography}
 
-% use this for biblatex/biber
-\printbibliography
+%% use this for biblatex/biber
+%% 'title = ' changes the heading of the bibliography section,
+%% and 'heading = ' ensures it is listed in the ToC 
+    \printbibliography[title = {REFERENCES}, heading=bibintoc]
 
 \end{document}
