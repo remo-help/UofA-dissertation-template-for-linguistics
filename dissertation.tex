@@ -30,19 +30,68 @@
 % Package Usage
 % These are the packages that I recommend
 
+\usepackage{fancyhdr} % cosmetics for better headings
+%%----This is an attempt to fix the header issue.
+    \fancypagestyle{plain}{
+        \lhead{}
+        \chead{}
+        \fancyhead[R]{\thepage}
+        \fancyhead[L]{}
+        \fancyhead[C]{}
+        \renewcommand{\headrulewidth}{0pt}
+        \fancyfoot{}
+        \setlength{\footskip}{4.35004pt}
+    }
+    \setlength{\headheight}{20.5pt}
+    \pagestyle{plain}
+    
+    \fancypagestyle{fancy}{
+        \fancyhead[R]{\thepage}
+        \fancyhead[L]{\leftmark}
+        \fancyhead[C]{}
+        \renewcommand{\headrulewidth}{0pt}
+        \fancyfoot{}
+    }
+%% This is an attempt at juryrigging an appendix
+\usepackage{pdfpages}
 
-%\usepackage{color} %broader color range and color options, allows you to define your
-                    % own colors as RBG vectors
 
+\usepackage{xcolor} %broader color range and color options, allows you to define your own colors as RBG vectors
 
+%%  Packages for Tables and Graphics:
 \usepackage{graphicx} % allows insertion of pictures etc
+    \graphicspath{{images/}}
+%%  Packages for Tables and Graphics:
+\usepackage{placeins} % helps with floats and placing elements within sections
+\usepackage{float} %trying to get my images where I want them
 
+% \usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
+% \usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
+\usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
+\usepackage{longtable} %trying to allow tables to go onto next page
+\usepackage{array} % trying to control table cell size
 
+\usepackage{enumitem} % allows advanced controls of tables and example numbering
 
-\usepackage[utf8]{inputenc} %allows you to directly input utf-8 characters
+%############ XELATEX SUPPORT ############
+%%  Packages for Fonts
+\usepackage{times}  %enable if you want to use a times font
+\usepackage{fontspec}
+    \setmainfont{Times} % If you want to use Times
+    \newfontfamily\ipa{Doulos SIL} %ALT FONT
+    % \newfontfamily\nameofcommand{Font Name} %Template
+% \usepackage[utf8]{inputenc} %allows you to directly input utf-8 characters
                             % this means you can just type Árüz instead of \'Ar\"uz
 
-                            
+\usepackage{amsmath} %this allows the use of \eqref{}, eqref will automatically put 
+                    % brackets around your reference, which is great for referencing
+                    % gb4e examples
+  
+%% ############ Packages for Citations: ############                          
+% todo: add notes here
 % \usepackage{natbib}
 % \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}} % natbib is available on most systems, and is
 					% terribly handy.
@@ -55,31 +104,39 @@
                 maxbibnames=99,
                 natbib]{bib latex}
 \addbibresource{bibliography.bib}
+\renewcommand{\bibname}{References}
 
+%% ###################### TODONOTES #######################
+%% Uncomment the following line for final draft
+%     %% \usepackage[disable]{todonotes}
 
-\usepackage{tipa} %enables an IPA environment
+    \usepackage[colorinlistoftodos,backgroundcolor= yellow, bordercolor= black]{todonotes}
+    \setuptodonotes{inline, prepend, caption={ToDo}}
 
-\usepackage{qtree} %allows simple trees
-\usepackage[linguistics]{forest} %allows more complex trees
+%% Custom ToDo notes
+%%  Useage: \done{completed todo text, prints 'done'}, \nw{todos from nw}, \todocite{prints the work cite}
+%% todo notes for completed todos:
+    \newcommand{\done}[1]{\todo[color=green!40, prepend, caption={Done}]{#1}}
+%% todo notes by self:
+    \newcounter{todocounter}
+    \newcommand{\todonum}[2][]
+    {\stepcounter{todocounter}\todo[#1]
+    {\thetodocounter: #2}}
+%% todo notes by Natasha
+    \newcommand{\nw}[2][]
+    {\stepcounter{todocounter}\todo[color=orange!40, author=Natasha, noprepend]{\thetodocounter: #2}}   
 
+%% todo notes for adding citation
+    \newcommand{\todocite}[2][]
+    {\stepcounter{todocounter}\todo[inlinewidth=2.2cm, noinlinepar, color=blue!40, prepend, caption={CITE}]
+    {\thetodocounter: #2}}  
 
-\usepackage{fancyhdr} % cosmetics for better headings
+%% todo notes for reverse outline
+     \newcommand{\reverseOutline}[2][]
+     {\stepcounter{todocounter}\todo[color=grey!40, noprepend]{\thetodocounter: #2}}
+%% #######################################
 
-
-
-% \usepackage{times}  %enable if you want to use a times font
-\usepackage{amsmath} %this allows the use of \eqref{}, eqref will automatically put 
-                    % brackets around your reference, which is great for referencing
-                    % gb4e examples
-\usepackage[hidelinks]{hyperref} %allows to use references as links [hidelinks] makes sure there are no borders around the link, gives me \autoref
-
-
-\usepackage{lscape}			% Used for making fitting large tables in by putting them landscape
-\usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
-
-
-% \usepackage{enumitem} % allows advanced controls of tables and example numbering
-		
+\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file	
 
 % If you are using hyper-ref (recommended), this command must go after all 
 % other package inclusions (from the hyperref package documentation).
@@ -88,12 +145,15 @@
 %allows to use references as links [hidelinks] makes sure there are no borders around the link, gives us \autoref
 \usepackage[hidelinks]{hyperref}
 
+%% ########## Linguistics Packages ############
+\usepackage{tikz} %graph solution that should help me get a nice vowel chart
+\usepackage{tipa} %enables an IPA environment
+\usepackage{qtree} %allows simple trees
+\usepackage[linguistics]{forest} %allows more complex trees
 \usepackage{gb4e} %manages example numbering, has to be last package in pre-amble, will break document otherwise
 
-\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file
-
 % Set up some values.
-\completetitle{}
+\completetitle{Title}
 \fullname{}			% Grad college wants your full name here.
 \degreename{Doctor of Philosophy}	% Title of your degree.
 \degreemajor{Linguistics} % Degree major
@@ -190,7 +250,9 @@
 % if you wish to use the UA citation style instead, call "uabibnat.bst" in the \bibliographystyle
 %\bibliography{bibliography}
 
-% use this for biblatex/biber
-\printbibliography
+%% use this for biblatex/biber
+%% 'title = ' changes the heading of the bibliography section,
+%% and 'heading = ' ensures it is listed in the ToC 
+    \printbibliography[title = {REFERENCES}, heading=bibintoc]
 
 \end{document}
