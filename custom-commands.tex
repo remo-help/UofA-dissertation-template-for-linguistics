@@ -16,3 +16,25 @@
     }
 
 
+%% Custom ToDo notes
+%%  Useage: \done{completed todo text, prints 'done'}, \nw{todos from nw}, \todocite{prints the work cite}
+%% todo notes for completed todos:
+    \newcommand{\done}[1]{\todo[color=green!40, prepend, caption={Done}]{#1}}
+%% todo notes by self:
+    \newcounter{todocounter}
+    \newcommand{\todonum}[2][]
+    {\stepcounter{todocounter}\todo[#1]
+    {\thetodocounter: #2}}
+%% todo notes by NW
+    \newcommand{\todoNW}[2][]
+    {\stepcounter{todocounter}\todo[color=orange!40, author=NW, noprepend]{\thetodocounter: #2}}   
+
+%% todo notes for adding citation
+    \newcommand{\todocite}[2][]
+    {\stepcounter{todocounter}\todo[inlinewidth=2.2cm, noinlinepar, color=blue!40, prepend, caption={CITE}]
+    {\thetodocounter: #2}}  
+
+%% todo notes for reverse outline
+     \newcommand{\reverseOutline}[2][]
+     {\stepcounter{todocounter}\todo[color=grey!40, noprepend]{\thetodocounter: #2}}
+
