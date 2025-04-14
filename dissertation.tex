@@ -83,6 +83,15 @@
                      % brackets around your reference, 
                      % which is great for referencing gb4e examples.  
 
+\usepackage{siunitx} % Required for aligning numbers in a table or equation by decimal and digits, instead of characters.
+% Example: 
+% 10.591  vs  10.591
+%  0.59   vs    0.59
+\sisetup{
+  round-mode          = places, % Rounds numbers
+  round-precision     = 2 % to 2 places
+} 
+
 %%############ PDFLATEX FONT SUPPORT ############
 %%Uncomment this section if your compiler is PDFLATEX
 %%inputenc allows you to directly input utf-8 characters. This means you can just type Árüz instead of \'Ar\"uz:
