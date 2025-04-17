@@ -1,7 +1,5 @@
 %!TEX root = ../dissertation.tex
 
-\noindent Add acknowledgements here. 
-\todonum{Complete this text.}
 \chapter[Chapter 2]{TitleofChapter}
 
 Let's make a figure out of a tree and position it right under our text:
@@ -17,13 +15,37 @@ Let's make a figure out of a tree and position it right under our text:
 \end{figure}
 \todoNW{Example Todo Note from NW}
 
+Here is a table positioned at the top of the page, with the `S' column used to align numerical data by decimal points. Compare the second column to the third and fourth. Notice how text is enclosed in \\text\{\}, as `s' type columns read all characters as numbers, and will error out if other characters are not properly declared:
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{0.85\textwidth}{llSS}
+\toprule
+Col 1 & Col 2 & \text{Numerical column 3} &  \text{Numerical column 3} \\
+\midrule
+1 & 124   & 3              & 24.82   \text{\$} \\ 
+2 & 463   & 1000           & 0       \text{\$} \\ 
+3 & 675   & 564            & 0       \text{\$} \\ 
+4 & 175   & 33             & 241.139 \text{\$} \\ 
+5 & 357   & 56             & 13.5    \text{\$} \\ 
+6 & 15685 & 253            & 2.67    \text{\$} \\ 
+7 & 23    & \text{unknown} & 27.27   \text{\$} \\ 
+\bottomrule
+\end{tabularx}
+\caption{Example of numerical table}
+\label{tab:numerical-table}
+\end{table}
+
 And here is a table which we position at the bottom:
-%%%%%%%%% some custom definitions first
-\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}} %here we define a custom column
-% type, called 's', this will have the color as defined via HTML and a width of 3cm
+%% some custom definitions first
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}} 
+%% here we define a custom column
+%% type, called `s', this will have the color as defined via HTML and a width of 3cm
+
 \arrayrulecolor[HTML]{DB5800}
-\colorlet{mycolor}{red!30!blue!50} % here we define our own color, using red  
-                                    % at 30% opacity and blue at 50%
+\colorlet{mycolor}{red!30!blue!50} %% here we define our own color, using red  
+                                   %% at 30% opacity and blue at 50%
 %%%%%%%%% https://www.overleaf.com/learn/latex/Tables
 \begin{table}[b!]
 \begin{tabular}{ |s|p{3cm}|p{3cm}| }
