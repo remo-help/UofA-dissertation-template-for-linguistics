@@ -1,24 +1,34 @@
-% Sample Dissertation, Thesis, or Document %
-%            for use with the              %
-%  University of Arizona Thesis Class,     %
-%               uathesis.cls               %
-%------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sample Dissertation, Thesis, or Document  %%
+%%            for use with the               %%
+%%  University of Arizona Thesis Class,      %%
+%%               uathesis.cls                %%
+%% ----------------------------------------- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% This is an adapted version of J.J. Charfman's template which can be
-% found here: https://da.overleaf.com/latex/templates/university-of-arizona-astronomy-thesis-template/tsfqcgnfmjcx
-% This template is adapted for linguistics, with support for XeLaTeX, duly tested on . The uncommented line
-% below will produce a Dissertation, the others would produce a Thesis
-% or a Document.  There are other options available to you like turning
-% on the copyright statement and replacing the year on the title page
-% with a "generated on" stamp (handy for early drafts).  To find out
-% what the available options are, take a look into the uathesis.cls
-% file and look for the \DeclareOption commands near the top of that
-% file.
-% There are five copyright options.  Copyright, no copyright, and three
-% different Creative Commons licences.  Use the one you want (If you go
-% Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
-% uathesis.cls for the reason why the non-commercial licenses are not
-% included.
+%% HOW TO USE THIS DOCUMENT:
+%% Any line beginning with `%%' is a descriptive comment. DO NOT GET RID OF `%%', 
+%% or you will face unresolvable and incomprehensible compiler errors.
+%% Any line beginning with `%' is a optional code chunk. Uncomment it by removing
+%% `%' and run the code. Please read the associated comments carefully.
+
+%% INTRODUCTION:
+%% This is an adapted version of J.J. Charfman's template which can be
+%% found here: https://da.overleaf.com/latex/templates/university-of-arizona-astronomy-thesis-template/tsfqcgnfmjcx
+%% This template is adapted for linguistics, with support for XeLaTeX, duly tested on . The uncommented line
+%% below will produce a Dissertation, the others would produce a Thesis
+%% or a Document.  There are other options available to you like turning
+%% on the copyright statement and replacing the year on the title page
+%% with a "generated on" stamp (handy for early drafts).  To find out
+%% what the available options are, take a look into the uathesis.cls
+%% file and look for the \DeclareOption commands near the top of that
+%% file.
+%% There are five copyright options.  Copyright, no copyright, and three
+%% different Creative Commons licences.  Use the one you want (If you go
+%% Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
+%% uathesis.cls for the reason why the non-commercial licenses are not
+%% included.
+
 \documentclass[dissertation]{uathesis} 
 %\documentclass[dissertation,copyright]{uathesis}
 %\documentclass[dissertation,CC-BY]{uathesis}
@@ -27,11 +37,12 @@
 %\documentclass[thesis]{uathesis}
 %\documentclass[document]{uathesis}
 
-%%############ Package Usage ############
-% These are the packages that I recommend
+%% ############ Package Usage ############
+%% These are the packages that I recommend:
 
-\usepackage{fancyhdr} % cosmetics for better headings
-%%----This is an attempt to fix the header issue pointed out by Grad College- comment this section out if its not needed.
+\usepackage{fancyhdr} %% cosmetics for better headings
+%% ----This is an attempt to fix the header issue pointed out by Grad College- 
+%% comment this section out if its not needed.
     \fancypagestyle{plain}{
         \lhead{}
         \chead{}
@@ -56,71 +67,83 @@
 %% This is an attempt at juryrigging an appendix
 \usepackage{pdfpages}
 
+\usepackage{xcolor} %% broader color range and color options, 
+		    %% allows you to define your own colors as RBG vectors
 
-\usepackage{xcolor} %broader color range and color options, allows you to define your own colors as RBG vectors
+%% ############ Packages for Tables and Graphics ############
+\usepackage{placeins} %% helps with floats and placing elements within sections
+\usepackage{float}    %% trying to get my images where I want them
 
-%%############ Packages for Tables and Graphics ############
-\usepackage{graphicx} % allows insertion of pictures etc
+\usepackage{graphicx} %% allows insertion of pictures etc
     \graphicspath{{images/}}
-%%  Packages for Tables and Graphics:
-\usepackage{placeins} % helps with floats and placing elements within sections
-\usepackage{float} %trying to get my images where I want them
 
-% \usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
-% \usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
+%%  Packages for Tables:
 \usepackage{tabularx}
 \usepackage{booktabs}
-\usepackage{lscape}           % Used for making fitting large tables in by putting them landscape
-\usepackage{colortbl} %tables with color celss
-\usepackage[tableposition=t]{caption} % (makes table captions normal size when font set smaller)
-\usepackage{longtable} %trying to allow tables to go onto next page
-\usepackage{array} % trying to control table cell size
+\usepackage{lscape}    %% Used for making fitting large tables in by putting them landscape
+\usepackage{colortbl}  %% tables with color class
+\usepackage[tableposition=t]{caption} %% (makes table captions normal size when font set smaller)
+\usepackage{longtable} %% trying to allow tables to go onto next page
+\usepackage{array}     %% trying to control table cell size
 
-\usepackage{enumitem} % allows advanced controls of tables and example numbering
+%% Package for improving lists:
+\usepackage{enumitem}  %% allows advanced controls of tables and example numbering
 
-\usepackage{amsmath} %amsmath allows the use of \eqref{}, 
-                     % eqref will automatically put 
-                     % brackets around your reference, 
-                     % which is great for referencing gb4e examples.  
-
-\usepackage{siunitx} % Required for aligning numbers in a table or equation by decimal and digits, instead of characters.
-% Example: 
-% 10.591  vs  10.591
-%  0.59   vs    0.59
+%% Packages for additional formatting and support:
+\usepackage{amsmath}  %% amsmath allows the use of \eqref{}, 
+                      %% eqref will automatically put 
+                      %% brackets around your reference, 
+                      %% which is great for referencing gb4e examples.
+\usepackage{siunitx}  %% Required for aligning numbers in a table or equation 
+		      %% by decimal and digits, instead of characters.
+		      %% Example: 
+		      %% 10.591  vs  10.591
+		      %%  0.59   vs    0.59
 \sisetup{
-  round-mode          = places, % Rounds numbers
-  round-precision     = 2 % to 2 places
+  round-mode      = places, %% Rounds numbers
+  round-precision = 2 	    %% to 2 places
 } 
 
-%%############ PDFLATEX FONT SUPPORT ############
-%%Uncomment this section if your compiler is PDFLATEX
-%%inputenc allows you to directly input utf-8 characters. This means you can just type Árüz instead of \'Ar\"uz:
+%%############ FONT SUPPORT ############
+%% LaTeX offers several compilers, that need their own packages to run. This tempalte provides support for
+%% PDFLaTeX and XeLaTeX. If you use TeX or LuaLaTeX, your document will not compile.
+%% Choose one of the two following sections, and comment the other: 
 
-% \usepackage[utf8]{inputenc} 
+%% 1. PDFLaTeX FONT SUPPORT:
+%% Uncomment the following if your compiler is PDFLATEX, 
+%% and comment the `XELATEX FONT SUPPORT' section:
+
+% \usepackage[utf8]{inputenc} %% inputenc allows you to directly input utf-8 characters. 
+			      %% This means you can just type Árüz instead of \'Ar\"uz:
                             
-%%############ XELATEX FONT SUPPORT ############
-%%  Packages for Fonts. To add a new font and call it alongside the main font of the text, use the format '\newfontfamily\nameofcommand{Font Name}' as shown below.
+%% 2. XELATEX FONT SUPPORT
+%% Uncomment the following if your compiler is XELATEX, and comment the `PDFLATEX FONT SUPPORT' option.
+%% Fontspec is a package for loading fonts.
+%% To add a new font and call it alongside the main font of the text, 
+%% use the format '\newfontfamily\nameofcommand{Font Name}' as shown below.
 
-\usepackage{times}  %enable if you want to use a times font
+\usepackage{times}  		   %% enable if you want to use a times font
 \usepackage{fontspec}
-    % \setmainfont{Times} % Uncomment if you want to use Times
-    \newfontfamily\ipa{Doulos SIL} %ALT FONT for IPA symbols
+    % \setmainfont{Times} 	   %% Uncomment if you want to use Times
+    \newfontfamily\ipa{Doulos SIL} %% ALT FONT for IPA symbols. Ensure system has font.
 
 %% ############ Packages for Citations: ############                          
-%% LaTeX has two bibliography compiling systems, natbib and biber. Choose the one that you intend to use:
+%% LaTeX has two bibliography compiling systems, natbib and biber. Choose the one that you intend to use
+%% and comment the other:
 
-%% 1. NATBIB:
-%% natbib is available on most systems, and is
-					% terribly handy.
-					% We are using biber for this template, but leaving natbib in as an option
-                    % if you want to use natbib instead of biber/biblatex, you need to 
-                    % comment out the next package and the % addbibresource params
+%% 1. NATBIB: Comment (2) and run the following:
+%% natbib is available on most systems, and is terribly handy.
+%% We are using biber for this template, but leaving natbib in as an option
+%% if you want to use natbib instead of biber/biblatex, you need to 
+%% comment out the next package and the \addbibresource params:
+
 % \usepackage{natbib}
-% \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}} 
+% \setcitestyle{semicolon,aysep={},yysep={,},notesep={:}}
 
-%% 2. BIBER:
+%% 2. BIBER: Comment (1) and run the following:
+%% Biber is the second option. 
 \usepackage[backend=biber,
-                style=unified, % we are using the LSA unified style sheet here
+                style=unified, %% we are using the LSA unified style sheet here
                 maxcitenames=2,
                 maxbibnames=99,
                 natbib]{bib latex}
@@ -128,134 +151,146 @@
 \renewcommand{\bibname}{References}
 
 %% ###################### TODONOTES #######################
-%% Use one of the following two package invocations. The first is for the final version, the second for adding todonotes and comments:
+%% Use one of the following two package invocations. 
+%% The first is for the final version, the second for adding todonotes and comments:
 
-%% 1. DISABLE TODONOTES:
+%% 1. DISABLE TODONOTES, comment code in (2)
 %\usepackage[disable]{todonotes}
-%% 2. ENABLE TODONOTES:
+
+%% 2. ENABLE TODONOTES, comment code in (1)
 \usepackage[colorinlistoftodos,backgroundcolor= yellow, bordercolor= black]{todonotes}
     \setuptodonotes{inline, prepend, caption={ToDo}}
-%% #######################################
-	
 
-% If you are using hyper-ref (recommended), this command must go after all 
-% other package inclusions (from the hyperref package documentation).
-% The purpose of hyperref is to make the PDF created extensively
-% cross-referenced.
-%allows to use references as links [hidelinks] makes sure there are no borders around the link, gives us \autoref
+%% ################### FORMATTING HYPERLINKS ###############
+%% If you are using hyper-ref (recommended), this command must go after all 
+%% other package inclusions (from the hyperref package documentation).
+%% The purpose of hyperref is to make the PDF created extensively cross-referenced.
+%% It allows us to use references as links [hidelinks], 
+%% makes sure there are no borders around the link, and gives us \autoref:
+
 \usepackage[hidelinks]{hyperref}
 
 %% ########## Linguistics Packages ############
-\usepackage{tikz} %graph solution that should help me get a nice vowel chart
-\usepackage{tipa} %enables an IPA environment
-\usepackage{qtree} %allows simple trees
-\usepackage[linguistics]{forest} %allows more complex trees
-\usepackage{gb4e} %manages example numbering, has to be last package in pre-amble, will break document otherwise
+\usepackage{tikz}	%% graph solution that should help me get a nice vowel chart
+\usepackage{tipa}	%% enables an IPA environment
+\usepackage{qtree}	%% allows simple trees
+\usepackage[linguistics]{forest} %% allows more complex trees
+\usepackage{gb4e} %% manages example numbering, has to be last package in pre-amble, will break document otherwise
 
 %% ########## Set up values for Title Page ############
  
-\completetitle{Title}
-\fullname{}			% Grad college wants your full name here.
-\degreename{Doctor of Philosophy}	% Title of your degree.
-\degreemajor{Linguistics} % Degree major
+\completetitle{Title}		   %% Title of your dissertation
+\fullname{}			   %% Grad college wants your full name here.
+\degreename{Doctor of Philosophy}  %% Title of your degree.
+\degreemajor{Linguistics}          %% Degree major
+\counterwithout{footnote}{chapter} %% disable this if you want your footnotes to reset their counter for each chapter
 
-\counterwithout{footnote}{chapter} %disable this if you want your footnotes to reset their counter for each chapter
+%% the inlinetitle below will be used on the graduate college signature page if you uncomment it. 
+%% This is useful if your completetitle uses a linebreak or other command that would break an inline use of that title. 
+%% If you leave this commented it will do nothing. Uncomment and give it a value to activate. The change will be visible on page 2.
 
-% the inlinetitle below will be used on the graduate college signature page if you uncomment it. 
-% This is useful if your completetitle uses a linebreak or other command that would break an inline use of that title. 
-% If you leave this commented it will do nothing. Uncomment and give it a value to activate. The change will be visible on page 2.
+% \inlinetitle{}
 
-%\inlinetitle{}
-
+%% ########## BEGIN DOCUMENT ############
 \begin{document}
 
-\include{custom-commands.tex} % we are hosting all the custom commands we are writing in a seperate file
+\include{custom-commands.tex} %% we are hosting all the custom commands we are writing in a seperate file
 
-% tocdepth defines how many layers of sections/subsections are displayed in your table of content. The hierarchy works like this:
-% Chapters (1)> Sections (2) > Subsections (3) > SubSubsections (4) > Paragraphs (5)
-% Default = 4
-%\setcounter{tocdepth}{5} 
-% secnumdepth does the same work, except it numbers your sections. Chapters are automatically numbered, so setting this to 4 will give you numbered paragraphs. Default = 3
-%\setcounter{secnumdepth}{4}
+%% ########## Set up depth values to number sections ############
+%% tocdepth defines how many layers of sections/subsections are displayed in your table of content. The hierarchy works like this:
+%% Chapters (1)> Sections (2) > Subsections (3) > SubSubsections (4) > Paragraphs (5)
+%% Default = 4
+%% secnumdepth does the same work, except it numbers your sections. 
+%% Chapters are automatically numbered, so setting this to 4 will give you numbered paragraphs. 
+%% Default = 3
+
+% \setcounter{tocdepth}{5} 
+% \setcounter{secnumdepth}{4}
 
 
 
-% Set up the title page
+%% Set up the title page
 \maketitlepage
-{DEPARTMENT OF LINGUISTICS}	% Title of your department.
+{DEPARTMENT OF LINGUISTICS}	%% Title of your department.
 {2019}							
 
-% Insert the approval form.  Note that for electronic submission
-% of your Ph. D. dissertation, you must bring *two* copies of the
-% approval page to your final defense.  These must be signed by
-% the committee.  Make two photocopies: one for the department
-% and the other for your records.  Then, bring the two signed 
-% originals to the graduate college when you submit the 
-% final version of the dissertation to the University of Arizona.
-% if you want to change the number of lines displayed, you need to do this in the uathesis.cls class, check the \approval command
+%% Insert the approval form.  Note that for electronic submission
+%% of your Ph. D. dissertation, you must bring *two* copies of the
+%% approval page to your final defense.  These must be signed by
+%% the committee.  Make two photocopies: one for the department
+%% and the other for your records.  Then, bring the two signed 
+%% originals to the graduate college when you submit the 
+%% final version of the dissertation to the University of Arizona.
+%% if you want to change the number of lines displayed, 
+%% you need to do this in the uathesis.cls class, check the \approval command
+
 \approval
-{}		% Defense Date	
-{}	% Dissertation Director
-{}	% 1st committee member
-{}		% 2nd committee member
-{}		% 3rd committee member
-{}		% 4th committee member
-{}		% 5th committee member
-{}		% 6th committee member
+{}	%% Defense Date	
+{}	%% Dissertation Director
+{}	%% 1st committee member
+{}	%% 2nd committee member
+{}	%% 3rd committee member
+{}	%% 4th committee member
+{}	%% 5th committee member
+{}	%% 6th committee member
 
-% if you want to load your approval with a UA watermark, use this command, which uses the same syntax as the one above:
-% \approvalWithWM{}{}{}{}{}{}{}{}
+%% if you want to load your approval with a UA watermark, use this command, which uses the same syntax as the one above:
+%% \approvalWithWM{}{}{}{}{}{}{}{}
 
-% Include the ``Statement by Author'' for Dissertations
+%% Include the ``Statement by Author'' for Dissertations
 \statementbyauthor
-% If this is a Thesis, use the following form, with your thesis director's
-% name and title in the square brackets like so (you should also omit the 
-% approval form insertion above):
+
+%% If this is a Thesis, use the following form, with your thesis director's
+%% name and title in the square brackets like so (you should also omit the 
+%% approval form insertion above):
+
 %\statementbyauthor[Jane M. Doe\\Professor of Chemistry]
 
-% Include the ``Acknowledgements''
+%% Include the ``Acknowledgements''
 \incacknowledgements{sections/acknowledgements}
 
-% Include the ``Dedication''
+%% Include the ``Dedication''
 \incdedication{sections/dedication}
 
-% Create a ``Table of Contents''
+%% Create a ``Table of Contents''
 \tableofcontents
 
-% Create a ``List of Figures''
+%% Create a ``List of Figures''
 \listoffigures
 
-% Create a ``List of Tables''
+%% Create a ``List of Tables''
 \listoftables
 
-% Include the ``Abstract''
+%% Include the ``Abstract''
 \incabstract{sections/abstract}
 
-% Include the various chapters
+%% Include the various chapters
 \include{sections/introduction}
 \include{sections/chapter2}
 \include{sections/chapter3}
 
 
-% Include the various appendices
+%% Include the various appendices
 \appendix
 \include{sections/appendix}
 
+%% ########## Set up BIBLIOGRAPHY ############
+%% Switch the spacing to single-spaced for the references
+\renewcommand{\baselinestretch}{1}	%% changing the value
+\small\normalsize			%% switch size to make the value take
 
-% Switch the spacing to single-spaced for the references
-\renewcommand{\baselinestretch}{1}		% changing the value
-\small\normalsize						% switch size to make the value take
+%% 1.  Use the below if using natbib, comment code in (2):
+%% this is where your natbib stylesheet is referenced:
+% \bibliographystyle{sp-lsa.bst}	%% S\&P bibliography style, an LSA publication,
+					%% meets the LSA guidelines.  
+					%% if you wish to use the UA citation style instead, 
+     					%% call "uabibnat.bst" in the \bibliographystyle
+% \bibliography{bibliography}		%% Call bibliography file, with the .bib extension
 
-% Use the below if using natbib
-% this is where your natbib stylesheet is referenced
-%\bibliographystyle{sp-lsa.bst}	% S\&P bibliography style
-% S\&P, an LSA publication, meets the LSA guidelines.  
-% if you wish to use the UA citation style instead, call "uabibnat.bst" in the \bibliographystyle
-%\bibliography{bibliography}
-
-%% use this for biblatex/biber
+%% 2. Use this for biblatex/biber, comment code in (1):
 %% 'title = ' changes the heading of the bibliography section,
 %% and 'heading = ' ensures it is listed in the ToC 
-    \printbibliography[title = {REFERENCES}, heading=bibintoc]
+
+\printbibliography[title = {REFERENCES}, heading=bibintoc]
 
 \end{document}
